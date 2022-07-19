@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: gabi
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+
+  app:
+    build: app
+    depends_on:
+      - db
+
+  web:
+    build: web
+    restart: on-failure:5
+    ports: 
+      - 8080:8080
