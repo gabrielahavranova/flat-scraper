@@ -4,15 +4,6 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 
-def getData():
-    conn = psycopg2.connect(database="postgres", user='gabi', password='example', host='db', port='5432')
-    if conn:
-        print("SUCCESSFULLY CONNECTED TO THE DB!")
-    else:
-        print("COULD NOT CONNECT TO THE DB!")
-    conn.close()
-
-
 app = Flask(__name__)
 @app.route('/')
 def renderPage():
